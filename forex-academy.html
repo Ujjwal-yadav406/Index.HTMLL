@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Forex Academy — a free educational guide to foreign exchange trading, technical analysis, risk management and trading psychology.">
+<title>Forex Academy | Learn Forex Trading</title>
+<style>
+:root{
+  --bg:#07100d;--panel:#0d1814;--panel2:#111f19;--text:#eef7f1;--muted:#a9bbb1;
+  --accent:#c7f36b;--accent2:#65d6a0;--line:#20342b;--danger:#ff8b8b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(circle at 80% 0%,#163124 0,#07100d 38%);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(7,16,13,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;letter-spacing:-.5px}.logo span{color:var(--accent)}
+nav{display:flex;gap:20px;align-items:center}
+nav a{color:var(--muted);font-size:.92rem}nav a:hover{color:var(--accent)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:7px 10px;border-radius:8px}
+.hero{padding:92px 0 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center}
+.badge{display:inline-block;border:1px solid #36543f;background:#102319;color:var(--accent);padding:7px 12px;border-radius:999px;font-size:.8rem;font-weight:800}
+h1{font-size:clamp(2.7rem,6vw,5.2rem);line-height:1.02;letter-spacing:-3px;margin:18px 0}
+h1 span{color:var(--accent)}
+.lead{font-size:1.12rem;color:var(--muted);max-width:680px}
+.buttons{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 18px;border-radius:10px;border:1px solid var(--line);font-weight:800}
+.btn.primary{background:var(--accent);color:#10180e;border-color:var(--accent)}
+.btn:hover{transform:translateY(-1px)}
+.chart{background:linear-gradient(145deg,#12221a,#09130f);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 70px rgba(0,0,0,.25)}
+.chart-head{display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem;margin-bottom:12px}
+svg{width:100%;height:auto;display:block}
+section{padding:72px 0;border-top:1px solid rgba(32,52,43,.65)}
+.section-head{max-width:760px;margin-bottom:30px}
+.eyebrow{color:var(--accent);font-weight:900;text-transform:uppercase;font-size:.76rem;letter-spacing:1.5px}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:8px 0 12px}
+h3{font-size:1.25rem;margin-bottom:8px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:rgba(13,24,20,.82);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card p,.card li{color:var(--muted)}
+.card ul{padding-left:20px}
+.pair{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:13px 0}
+.pair:last-child{border:0}.symbol{font-weight:900}.tag{font-size:.78rem;padding:4px 8px;border-radius:6px;background:#183025;color:var(--accent)}
+.steps{counter-reset:step}.step{position:relative;padding:0 0 22px 58px;margin-bottom:15px}.step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#0b140e;font-weight:900}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:650px;background:var(--panel)}
+th,td{text-align:left;padding:14px;border-bottom:1px solid var(--line)}th{color:var(--accent);background:#101e18}td{color:var(--muted)}
+.callout{padding:20px;border-left:4px solid var(--accent);background:#0e1b15;border-radius:8px;margin-top:22px}
+.warning{border-left-color:var(--danger)}
+.calculator{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.form{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:16px}
+label{display:block;color:var(--muted);font-size:.9rem;margin:12px 0 5px}
+input,select{width:100%;padding:12px;background:#07100d;border:1px solid var(--line);border-radius:8px;color:var(--text)}
+.result{margin-top:18px;padding:18px;border-radius:10px;background:#13261c}
+.result strong{display:block;color:var(--accent);font-size:1.5rem}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}.faq summary{cursor:pointer;font-weight:800}.faq p{color:var(--muted);padding-top:9px}
+footer{padding:45px 0;color:var(--muted);text-align:center;border-top:1px solid var(--line)}
+@media(max-width:800px){
+  nav{display:none;position:absolute;left:4%;right:4%;top:70px;background:#0b1712;border:1px solid var(--line);border-radius:12px;padding:15px;flex-direction:column;align-items:stretch}
+  nav.open{display:flex}.menu{display:block}.hero{grid-template-columns:1fr;padding-top:65px}.grid{grid-template-columns:1fr}.calculator{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">FOREX<span>ACADEMY</span></a>
+    <button class="menu" id="menu">☰</button>
+    <nav id="nav">
+      <a href="#basics">Basics</a><a href="#analysis">Analysis</a><a href="#risk">Risk</a>
+      <a href="#psychology">Psychology</a><a href="#calculator">Calculator</a><a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container" style="display:contents">
+    <div>
+      <span class="badge">FREE FOREX EDUCATION</span>
+      <h1>Understand the market.<br><span>Trade with a plan.</span></h1>
+      <p class="lead">A beginner-friendly guide to foreign exchange trading — from currency pairs and pips to charts, technical analysis, liquidity, risk management and psychology.</p>
+      <div class="buttons"><a class="btn primary" href="#basics">Start Learning</a><a class="btn" href="#risk">Learn Risk Management</a></div>
+    </div>
+    <div class="chart">
+      <div class="chart-head"><span>XAU/USD • Educational chart</span><span>Demo concept</span></div>
+      <svg viewBox="0 0 520 300" role="img" aria-label="Illustrative candlestick chart">
+        <path d="M0 250H520M0 200H520M0 150H520M0 100H520M0 50H520" stroke="#20342b"/>
+        <polyline fill="none" stroke="#c7f36b" stroke-width="4" points="15,235 55,220 90,225 125,185 160,195 195,150 230,165 265,120 300,135 335,100 370,115 405,72 440,88 475,55 510,68"/>
+        <g stroke="#65d6a0" stroke-width="3"><path d="M55 220V245M90 205V235M125 165V205M195 130V170M265 100V140M335 80V115M405 55V90M475 40V70"/></g>
+        <g fill="#65d6a0"><rect x="50" y="220" width="10" height="18"/><rect x="120" y="175" width="10" height="20"/><rect x="190" y="140" width="10" height="18"/><rect x="260" y="110" width="10" height="20"/><rect x="330" y="88" width="10" height="18"/><rect x="400" y="60" width="10" height="20"/><rect x="470" y="48" width="10" height="16"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="basics">
+<div class="container">
+<div class="section-head"><div class="eyebrow">01 — Foundations</div><h2>Forex basics</h2><p class="muted">Forex, or foreign exchange, is the global market where one currency is exchanged for another. Prices are quoted as pairs because buying one currency means selling another.</p></div>
+<div class="grid">
+<div class="card"><h3>Currency pairs</h3><p>EUR/USD means the euro is the base currency and the U.S. dollar is the quote currency. If EUR/USD rises, one euro buys more dollars than before.</p></div>
+<div class="card"><h3>Major pairs</h3><div class="pair"><span class="symbol">EUR/USD</span><span class="tag">Major</span></div><div class="pair"><span class="symbol">GBP/USD</span><span class="tag">Major</span></div><div class="pair"><span class="symbol">USD/JPY</span><span class="tag">Major</span></div><div class="pair"><span class="symbol">USD/CHF</span><span class="tag">Major</span></div></div>
+<div class="card"><h3>Pips & spreads</h3><p>A pip is a commonly used unit for measuring small price movements. The spread is the difference between the bid and ask price and is one of the trading costs.</p></div>
+</div>
+<div class="callout"><strong>Example:</strong> If EUR/USD moves from 1.1000 to 1.1050, that is a 50-pip move under the standard four-decimal convention.</div>
+</div>
+</section>
+
+<section id="analysis">
+<div class="container">
+<div class="section-head"><div class="eyebrow">02 — Market analysis</div><h2>How traders study price</h2><p class="muted">No analysis method guarantees a profitable trade. Traders use different approaches to build hypotheses and manage uncertainty.</p></div>
+<div class="grid">
+<div class="card"><h3>🕯️ Candlesticks</h3><p>Each candle can show open, high, low and close for a chosen timeframe. Candles can help visualize momentum, rejection and consolidation.</p></div>
+<div class="card"><h3>📐 Support & resistance</h3><p>Areas where price has previously reacted can become reference points. They are zones rather than perfectly precise lines.</p></div>
+<div class="card"><h3>📈 Trend structure</h3><p>Higher highs and higher lows can describe an uptrend; lower highs and lower lows can describe a downtrend. Market structure can change.</p></div>
+<div class="card"><h3>💧 Liquidity</h3><p>Liquidity describes the availability of orders to transact. Traders may watch areas around previous highs/lows, but a liquidity concept is not a guarantee of future price behavior.</p></div>
+<div class="card"><h3>🧱 BOS / CHOCH / MSS</h3><p>These are popular market-structure terms. Definitions vary between trading communities, so use one consistent rule set when backtesting.</p></div>
+<div class="card"><h3>🕳️ Fair Value Gap</h3><p>An FVG is commonly described as an imbalance across a three-candle sequence. Traders may watch for price to revisit it, but it does not have to fill.</p></div>
+<div class="card"><h3>🏦 Fundamentals</h3><p>Interest rates, inflation, employment, central-bank decisions and economic growth can influence currencies. Major releases can increase volatility.</p></div>
+<div class="card"><h3>⏱️ Sessions</h3><p>Forex trades across global financial centers. London and New York hours are often closely watched because market activity can increase around major overlaps and releases.</p></div>
+<div class="card"><h3>📰 Economic calendar</h3><p>Before trading, check scheduled high-impact events. Unexpected headlines can also move markets rapidly.</p></div>
+</div>
+</div>
+</section>
+
+<section id="risk">
+<div class="container">
+<div class="section-head"><div class="eyebrow">03 — Risk management</div><h2>Protect the account first</h2><p class="muted">Risk management controls how much you can lose when a trade idea is wrong. It cannot eliminate losses.</p></div>
+<div class="grid">
+<div class="card"><h3>1% example</h3><p>If an account is $1,000 and a trader chooses to risk 1% on one trade, the planned maximum loss is $10 before costs/slippage.</p></div>
+<div class="card"><h3>Stop loss</h3><p>A stop-loss order can be used to define an exit point. In fast markets, execution can differ from the requested level.</p></div>
+<div class="card"><h3>Risk-to-reward</h3><p>A 1:3 target means risking 1 unit to target 3 units. A 1:3 ratio does not mean the trade has a 3× probability of winning.</p></div>
+</div>
+<div class="callout warning"><strong>Important:</strong> Leverage magnifies exposure. It can magnify losses as well as gains, and in some circumstances losses can be substantial. Learn the rules and protections that apply in your jurisdiction and with your broker.</div>
+</div>
+</section>
+
+<section id="calculator">
+<div class="container">
+<div class="section-head"><div class="eyebrow">04 — Practice tool</div><h2>Position risk calculator</h2><p class="muted">This simple calculator estimates your planned cash risk and reward from account size, risk percentage and reward-to-risk ratio. It does not calculate broker-specific lot size, pip value or slippage.</p></div>
+<div class="calculator">
+<div class="form">
+<label for="balance">Account balance</label><input id="balance" type="number" value="1000" min="0" step="0.01">
+<label for="riskPct">Risk per trade (%)</label><input id="riskPct" type="number" value="1" min="0" step="0.1">
+<label for="rr">Reward : Risk</label><input id="rr" type="number" value="3" min="0" step="0.1">
+</div>
+<div class="result"><p>Planned risk</p><strong id="riskOut">$10.00</strong><p>Potential reward at the selected R:R</p><strong id="rewardOut">$30.00</strong></div>
+</div>
+</div>
+</section>
+
+<section id="plan">
+<div class="container">
+<div class="section-head"><div class="eyebrow">05 — A repeatable process</div><h2>Build a trading plan</h2></div>
+<div class="steps">
+<div class="step"><h3>Define the market</h3><p class="muted">Choose the instruments and timeframes you will study rather than jumping between everything.</p></div>
+<div class="step"><h3>Write your setup</h3><p class="muted">Specify the conditions that must exist before entry, invalidation, target and trade-management rules.</p></div>
+<div class="step"><h3>Set risk before entry</h3><p class="muted">Know the amount you can lose before placing the trade. Never increase risk simply because a previous trade lost.</p></div>
+<div class="step"><h3>Journal every trade</h3><p class="muted">Record setup, entry, exit, reason, screenshot, emotions and result. Review a meaningful sample rather than judging a strategy from one trade.</p></div>
+<div class="step"><h3>Test before going live</h3><p class="muted">Use historical testing and/or a demo account to understand how your rules behave before risking real money.</p></div>
+</div>
+</div>
+</section>
+
+<section id="psychology">
+<div class="container">
+<div class="section-head"><div class="eyebrow">06 — Psychology</div><h2>Trading discipline</h2></div>
+<div class="grid">
+<div class="card"><h3>FOMO</h3><p>Entering because price is moving quickly can lead to impulsive decisions. If the setup is gone, waiting is a valid action.</p></div>
+<div class="card"><h3>Revenge trading</h3><p>Trying to immediately recover a loss can cause risk to increase. A daily loss limit can create a forced pause.</p></div>
+<div class="card"><h3>Overtrading</h3><p>More trades do not automatically mean more opportunity. Trade only when your predefined conditions are present.</p></div>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="container">
+<div class="section-head"><div class="eyebrow">07 — FAQ</div><h2>Common questions</h2></div>
+<div class="faq">
+<details open><summary>Can Forex make me rich quickly?</summary><p>There is no reliable method that guarantees quick wealth from Forex. Losses are possible, and leverage can increase the size of both gains and losses.</p></details>
+<details><summary>Should a beginner use leverage?</summary><p>Beginners should first understand margin, leverage, liquidation/stop-out rules and the potential size of losses. A demo account can be used to learn platform mechanics.</p></details>
+<details><summary>Is a strategy with 1:3 R:R automatically profitable?</summary><p>No. Profitability depends on many factors, including win rate, transaction costs, execution and how consistently the rules are followed.</p></details>
+<details><summary>What is the safest way to learn?</summary><p>Start with education, practice chart reading, write rules, backtest, use a demo account and learn the regulations and risks that apply where you live.</p></details>
+</div>
+<div class="callout"><strong>Educational notice:</strong> This website is for general education, not personalized financial advice or a promise of returns. Trading decisions should account for your financial situation, experience, applicable laws and the risks of loss.</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<p><strong>FOREX ACADEMY</strong> — Learn the market. Manage risk. Keep a journal.</p>
+<p style="margin-top:8px;font-size:.85rem">Educational content only • © <span id="year"></span></p>
+</div>
+</footer>
+
+<script>
+const menu=document.getElementById('menu'), nav=document.getElementById('nav');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+function calc(){
+  const balance=Math.max(0,Number(document.getElementById('balance').value)||0);
+  const pct=Math.max(0,Number(document.getElementById('riskPct').value)||0);
+  const rr=Math.max(0,Number(document.getElementById('rr').value)||0);
+  const risk=balance*pct/100;
+  document.getElementById('riskOut').textContent=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(risk);
+  document.getElementById('rewardOut').textContent=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(risk*rr);
+}
+['balance','riskPct','rr'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
+document.getElementById('year').textContent=new Date().getFullYear();
+calc();
+</script>
+</body>
+</html>
